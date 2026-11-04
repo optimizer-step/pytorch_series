@@ -1,6 +1,7 @@
 """Drawing helpers for PyTorch Episode 5.
 
-These functions only draw pictures.
+These functions only draw pictures. Everything that learns is in the notebook.
+Keep this file next to the notebook, so `from ep05_plots import ...` finds it.
 """
 import math
 
