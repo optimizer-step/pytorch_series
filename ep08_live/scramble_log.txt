@@ -1,0 +1,4 @@
+2026-11-09 21:29:26  race  epochs=12  secs=109.9  normal=0.881  scrambled=0.878  normal_by_epoch=0.837,0.827,0.86,0.866,0.867,0.87,0.871,0.876,0.866,0.869,0.877,0.881  scrambled_by_epoch=0.835,0.831,0.861,0.865,0.868,0.875,0.873,0.873,0.87,0.866,0.864,0.878  | torch 2.13.0+cu130 | 10 threads | Intel64 Family 6 Model 186 Stepping 2, GenuineIntel
+2026-11-09 21:29:27  slide  pixels=2  before=0.881  after=0.568
+2026-11-09 21:33:01  race  epochs=12  secs=117.1  normal=0.881  scrambled=0.878  normal_by_epoch=0.837,0.827,0.86,0.866,0.867,0.87,0.871,0.876,0.866,0.869,0.877,0.881  scrambled_by_epoch=0.835,0.831,0.861,0.865,0.868,0.875,0.873,0.873,0.87,0.866,0.864,0.878  | torch 2.13.0+cu130 | 10 threads | Intel64 Family 6 Model 186 Stepping 2, GenuineIntel
+2026-11-09 21:33:01  slide  pixels=2  before=0.881  after=0.568
