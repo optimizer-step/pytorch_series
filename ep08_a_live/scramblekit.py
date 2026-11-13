@@ -1,18 +1,14 @@
-"""Live race for scramble.py, reel 022 (MYTH vs MY LAPTOP #4). Keep this file in the folder but never open it on
-screen.
+"""Race helpers for scramble.py.
 
-race(): the same model learns from the normal photos and from the scrambled photos, one epoch each in turn, with two
-live bars, a timer and each model's exam score after every epoch; then DONE with both scores.
-slide(): slides every exam photo a few pixels to the right and scores a model again (Episode 7's shift).
-Every run is appended to scramble_log.txt next to this file, so the edit takes its numbers from there, and race()
-saves both models to scramble_run.pt for the fly-back graphic.
+race(): trains the same model on the normal photos and on the scrambled photos, one epoch each in turn, with two
+live bars, a timer and each model's exam score after every epoch.
+slide(): slides every exam photo a few pixels to the right and scores a model again.
+Every run is appended to scramble_log.txt, and race() saves both models to scramble_run.pt.
 
-The recipe is Episode 7's, cell for cell: Fashion-MNIST scaled to 0-1, the first 50,000 training photos to learn
-from, the 10,000 test photos as the exam, torch.manual_seed(42) before each model, Adam (lr 0.001), batches of 64
-reshuffled every epoch, 12 epochs, on the CPU. A DataLoader takes its shuffles from torch's one global random stream,
-so two models trained in turn would change each other's batches. Here each model gets its own copy of that stream,
-taken right after its seed and its starting weights, and draws from it the way a DataLoader does (one draw for the
-loader, one for its sampler's seed, then randperm), so each model sees the batches Episode 7 gave it.
+Same recipe as Episode 7: Fashion-MNIST scaled to 0-1, the first 50,000 training photos, the 10,000 test photos as
+the exam, torch.manual_seed(42) before each model, Adam (lr 0.001), batches of 64 reshuffled every epoch, 12 epochs,
+on the CPU. Each model shuffles with its own copy of torch's random stream, so the two runs never change each other's
+batches.
 """
 import copy
 import os
@@ -30,7 +26,7 @@ YEL, GRN, RED, DIM, BOLD, RST = "\033[93m", "\033[92m", "\033[91m", "\033[90m", 
 HERE = os.path.dirname(os.path.abspath(__file__))
 LOG = os.path.join(HERE, "scramble_log.txt")
 RUN = os.path.join(HERE, "scramble_run.pt")
-DATA = [os.path.join(HERE, "data"), r"C:\Users\AIML\optimizer_step_pytorch_episode_07\live\data"]
+DATA = [os.path.join(HERE, "data"), os.path.join(HERE, "..", "ep07_live", "data")]
 SEED, LR, BATCH = 42, 0.001, 64
 NAMES = ("NORMAL PHOTOS", "SCRAMBLED PHOTOS")
 

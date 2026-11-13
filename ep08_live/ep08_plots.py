@@ -1,11 +1,8 @@
-"""Plotting helpers for PyTorch Episode 8: drawing only, no training.
+"""Plotting helpers for PyTorch Episode 8.
 
-Three small exceptions, and none of them learns anything:
-- load_drawing() turns a drawing into a 28 x 28 photo in the Fashion-MNIST style;
-- open_in_paint() opens a drawing in Paint (a blank one if asked);
-- act() and the reveal helpers note the clock time of each big moment in
-  Videos/clip_marks/ep08.csv, so the clips are easy to find later. Nothing is
-  shown on screen for that.
+load_drawing() turns a drawing into a 28 x 28 photo in the Fashion-MNIST style,
+open_in_paint() opens a drawing in Paint (a blank one if asked), and act() and
+the reveal helpers log the time of each big moment to Videos/clip_marks/ep08.csv.
 """
 import os
 import subprocess
@@ -25,7 +22,7 @@ GOLD, GREY, INK, PALE = "#f2b705", "#8a919c", "#16181d", "#c9d6e8"
 DARK, NEON, HOT = "#0f1115", "#39d98a", "#ff5a5a"
 
 _MARKS = Path.home() / "Videos" / "clip_marks" / "ep08.csv"
-_QUIET = os.environ.get("OS_KIT_BUILD") == "1"          # set while the kit is built: no marks, no pauses
+_QUIET = os.environ.get("OS_QUIET") == "1"  # test runs: no marks, no pauses
 
 
 def _mark(moment):
